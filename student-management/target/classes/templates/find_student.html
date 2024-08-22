@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Find Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .form-container h2 {
+            text-align: center;
+        }
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-container label {
+            margin: 10px 0 5px;
+        }
+        .form-container input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-container button {
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #77aaff;
+        }
+        .student-details {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Find Student</h2>
+    <form th:action="@{/students/find}" method="post">
+        <label for="id">Student ID:</label>
+        <input type="number" id="id" name="id" required>
+        <button type="submit">Find Student</button>
+    </form>
+
+    <div class="student-details" th:if="${student != null}">
+        <h3>Student Details</h3>
+        <p><strong>ID:</strong> <span th:text="${student.id}"></span></p>
+        <p><strong>Name:</strong> <span th:text="${student.name}"></span></p>
+        <p><strong>Major:</strong> <span th:text="${student.major}"></span></p>
+        <p><strong>Year:</strong> <span th:text="${student.year}"></span></p>
+    </div>
+</div>
+</body>
+</html>
